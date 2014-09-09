@@ -1,4 +1,4 @@
-let version = "0.1"
+let version = "0.2"
 let getFormat f =
 	let ic = (open_in_bin f) in
 	let rec loop ch a =
