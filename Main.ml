@@ -19,5 +19,11 @@ let getFormat f =
 let () =
 	if Sys.argv.(1) = "-v" then Printf.printf "%s\n" version
 	else
-        let file = Sys.argv.(1) in
-        print_string (getFormat file);;
+		if 2 = Array.length Sys.argv then
+			let file = Sys.argv.(1) in
+			print_string (getFormat file)
+		else
+			for i=1 to Array.length Sys.argv - 1 do
+				let file = Sys.argv.(i) in
+				Printf.printf "%s\t%s\n" (getFormat file) file
+			done;;
