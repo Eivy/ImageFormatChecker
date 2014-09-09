@@ -12,10 +12,12 @@ let getFormat f =
 			| a -> if Array.length a > 10 then "unknown" else loop ch (Array.append a [|input_byte ic|])
 		with
 			End_of_file -> "unknown" in
-	loop ic [||];;
+	let result = loop ic [||] in
+	close_in ic;
+	result;;
 
 let () =
 	if Sys.argv.(1) = "-v" then Printf.printf "%s\n" version
 	else
-		let file = Sys.argv.(1) in
-		print_string (getFormat file);;
+        let file = Sys.argv.(1) in
+        print_string (getFormat file);;
